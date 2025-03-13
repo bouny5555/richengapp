@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日历 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <div class="page-title">日历</div>
+        </div>
+        
+        <!-- 视图切换 -->
+        <div class="view-tabs">
+            <div class="view-tab">日视图</div>
+            <div class="view-tab">周视图</div>
+            <div class="view-tab active">月视图</div>
+        </div>
+        
+        <!-- 日历头部 -->
+        <div class="calendar-header">
+            <button class="text-gray-500">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="month-title">2023年11月</div>
+            <button class="text-gray-500">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- 日历星期标题 -->
+        <div class="calendar-grid">
+            <div class="calendar-day-header">日</div>
+            <div class="calendar-day-header">一</div>
+            <div class="calendar-day-header">二</div>
+            <div class="calendar-day-header">三</div>
+            <div class="calendar-day-header">四</div>
+            <div class="calendar-day-header">五</div>
+            <div class="calendar-day-header">六</div>
+        </div>
+        
+        <!-- 日历天格 -->
+        <div class="calendar-grid mb-6">
+            <!-- 上月部分 -->
+            <div class="calendar-day text-gray-400">
+                <div class="day-number">29</div>
+            </div>
+            <div class="calendar-day text-gray-400">
+                <div class="day-number">30</div>
+            </div>
+            <div class="calendar-day text-gray-400">
+                <div class="day-number">31</div>
+            </div>
+            
+            <!-- 本月部分 -->
+            <div class="calendar-day">
+                <div class="day-number">1</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">2</div>
+            </div>
+            <div class="calendar-day has-events">
+                <div class="day-number">3</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">4</div>
+            </div>
+            
+            <div class="calendar-day">
+                <div class="day-number">5</div>
+            </div>
+            <div class="calendar-day has-events">
+                <div class="day-number">6</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">7</div>
+            </div>
+            <div class="calendar-day has-events">
+                <div class="day-number">8</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">9</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">10</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">11</div>
+            </div>
+            
+            <div class="calendar-day">
+                <div class="day-number">12</div>
+            </div>
+            <div class="calendar-day has-events">
+                <div class="day-number">13</div>
+            </div>
+            <div class="calendar-day today has-events">
+                <div class="day-number">14</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">15</div>
+            </div>
+            <div class="calendar-day has-events">
+                <div class="day-number">16</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">17</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">18</div>
+            </div>
+            
+            <div class="calendar-day">
+                <div class="day-number">19</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">20</div>
+            </div>
+            <div class="calendar-day has-events">
+                <div class="day-number">21</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">22</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">23</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">24</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">25</div>
+            </div>
+            
+            <div class="calendar-day">
+                <div class="day-number">26</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">27</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">28</div>
+            </div>
+            <div class="calendar-day has-events">
+                <div class="day-number">29</div>
+            </div>
+            <div class="calendar-day">
+                <div class="day-number">30</div>
+            </div>
+            
+            <!-- 下月部分 -->
+            <div class="calendar-day text-gray-400">
+                <div class="day-number">1</div>
+            </div>
+            <div class="calendar-day text-gray-400">
+                <div class="day-number">2</div>
+            </div>
+        </div>
+        
+        <!-- 当日日程 -->
+        <div class="mt-2 mb-4">
+            <div class="text-sm font-medium text-gray-500 mb-2">今日日程 · 11月14日</div>
+            
+            <!-- 日程列表 -->
+            <div class="schedule-item">
+                <div class="schedule-header">
+                    <div class="schedule-checkbox">
+                        <input type="checkbox" class="w-5 h-5 rounded-full">
+                    </div>
+                    <div class="schedule-title">团队周会</div>
+                    <span class="schedule-category category-work">工作</span>
+                </div>
+                <div class="schedule-details">
+                    <div class="schedule-time">
+                        <i class="far fa-clock"></i>
+                        <span>09:30 - 10:30</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-header">
+                    <div class="schedule-checkbox">
+                        <input type="checkbox" class="w-5 h-5 rounded-full">
+                    </div>
+                    <div class="schedule-title">AI课程学习</div>
+                    <span class="schedule-category category-study">学习</span>
+                </div>
+                <div class="schedule-details">
+                    <div class="schedule-time">
+                        <i class="far fa-clock"></i>
+                        <span>14:00 - 16:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 浮动添加按钮 -->
+    <div class="floating-btn">
+        <i class="fas fa-plus"></i>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-list-check"></i></div>
+            <div>日程</div>
+        </div>
+        <div class="tab-item active">
+            <div class="tab-icon"><i class="far fa-calendar"></i></div>
+            <div>日历</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>统计</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-gear"></i></div>
+            <div>设置</div>
+        </div>
+    </div>
+</body>
+</html> 
