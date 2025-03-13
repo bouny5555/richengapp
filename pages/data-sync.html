@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据同步 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .sync-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .sync-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .sync-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background-color: #e6f4ff;
+            color: #1677ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 12px;
+        }
+        .sync-title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .sync-desc {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .sync-progress {
+            height: 6px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #1677ff;
+            border-radius: 3px;
+        }
+        .sync-time {
+            font-size: 12px;
+            color: #999;
+            text-align: right;
+        }
+        .backup-list {
+            margin-top: 16px;
+        }
+        .backup-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .backup-item:last-child {
+            border-bottom: none;
+        }
+        .backup-info {
+            flex: 1;
+        }
+        .backup-name {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .backup-meta {
+            display: flex;
+            font-size: 12px;
+            color: #999;
+        }
+        .backup-meta div {
+            margin-right: 10px;
+        }
+        .backup-actions {
+            display: flex;
+        }
+        .backup-action {
+            margin-left: 16px;
+            color: #666;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 导航头部 -->
+        <div class="page-header">
+            <a href="settings.html" class="text-gray-600"><i class="fas fa-arrow-left"></i></a>
+            <div class="page-title">数据同步</div>
+            <div class="w-6"></div> <!-- 占位 -->
+        </div>
+        
+        <!-- 云同步卡片 -->
+        <div class="sync-card">
+            <div class="sync-header">
+                <div class="sync-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <div>
+                    <div class="sync-title">云同步</div>
+                    <div class="text-xs text-green-500 mt-1">已开启</div>
+                </div>
+            </div>
+            
+            <div class="sync-desc">
+                将您的日程数据自动同步到云端，确保多设备间数据一致，防止数据丢失。
+            </div>
+            
+            <div class="flex justify-between items-center">
+                <div class="text-sm">云存储空间</div>
+                <div class="text-sm">214MB / 1GB</div>
+            </div>
+            
+            <div class="sync-progress mt-2">
+                <div class="progress-bar" style="width: 21%;"></div>
+            </div>
+            
+            <div class="sync-time">
+                上次同步: 今天 15:23
+            </div>
+            
+            <div class="mt-4 flex justify-between">
+                <button class="btn-primary px-4">
+                    <i class="fas fa-sync-alt mr-2"></i>立即同步
+                </button>
+                
+                <div class="flex items-center">
+                    <div class="mr-2 text-sm">自动同步</div>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 本地备份卡片 -->
+        <div class="sync-card">
+            <div class="sync-header">
+                <div class="sync-icon" style="background-color: #fff0f6; color: #eb2f96;">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="sync-title">本地备份</div>
+            </div>
+            
+            <div class="sync-desc">
+                将您的日程数据备份到本地文件，可用于迁移数据或作为额外备份。
+            </div>
+            
+            <div class="flex space-x-3">
+                <button class="btn-primary flex-1">
+                    <i class="fas fa-file-export mr-2"></i>导出数据
+                </button>
+                <button class="border border-gray-300 text-gray-700 rounded-lg flex-1 py-2 px-4">
+                    <i class="fas fa-file-import mr-2"></i>导入数据
+                </button>
+            </div>
+            
+            <div class="backup-list">
+                <div class="text-sm font-medium text-gray-500 mb-2">备份历史</div>
+                
+                <!-- 备份项 1 -->
+                <div class="backup-item">
+                    <div class="backup-info">
+                        <div class="backup-name">备份_20231012_153045.json</div>
+                        <div class="backup-meta">
+                            <div><i class="far fa-calendar mr-1"></i>2023-10-12</div>
+                            <div><i class="far fa-clock mr-1"></i>15:30</div>
+                            <div><i class="fas fa-database mr-1"></i>1.2MB</div>
+                        </div>
+                    </div>
+                    <div class="backup-actions">
+                        <a href="#" class="backup-action"><i class="fas fa-cloud-download-alt"></i></a>
+                        <a href="#" class="backup-action"><i class="fas fa-share-alt"></i></a>
+                        <a href="#" class="backup-action text-red-500"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 备份项 2 -->
+                <div class="backup-item">
+                    <div class="backup-info">
+                        <div class="backup-name">备份_20231005_093022.json</div>
+                        <div class="backup-meta">
+                            <div><i class="far fa-calendar mr-1"></i>2023-10-05</div>
+                            <div><i class="far fa-clock mr-1"></i>09:30</div>
+                            <div><i class="fas fa-database mr-1"></i>1.1MB</div>
+                        </div>
+                    </div>
+                    <div class="backup-actions">
+                        <a href="#" class="backup-action"><i class="fas fa-cloud-download-alt"></i></a>
+                        <a href="#" class="backup-action"><i class="fas fa-share-alt"></i></a>
+                        <a href="#" class="backup-action text-red-500"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 数据迁移卡片 -->
+        <div class="sync-card">
+            <div class="sync-header">
+                <div class="sync-icon" style="background-color: #f6ffed; color: #52c41a;">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="sync-title">第三方数据迁移</div>
+            </div>
+            
+            <div class="sync-desc">
+                从其他日历应用导入数据，或将数据导出到其他应用。
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3 mt-4">
+                <button class="border border-gray-300 text-gray-700 rounded-lg py-2 px-4 flex items-center justify-center">
+                    <img src="https://www.gstatic.com/images/branding/product/1x/calendar_48dp.png" alt="Google日历" class="w-5 h-5 mr-2">
+                    <span>Google日历</span>
+                </button>
+                
+                <button class="border border-gray-300 text-gray-700 rounded-lg py-2 px-4 flex items-center justify-center">
+                    <i class="fab fa-apple text-gray-800 mr-2"></i>
+                    <span>Apple日历</span>
+                </button>
+                
+                <button class="border border-gray-300 text-gray-700 rounded-lg py-2 px-4 flex items-center justify-center">
+                    <i class="fab fa-microsoft text-blue-600 mr-2"></i>
+                    <span>Outlook</span>
+                </button>
+                
+                <button class="border border-gray-300 text-gray-700 rounded-lg py-2 px-4 flex items-center justify-center">
+                    <i class="fas fa-file-csv text-green-600 mr-2"></i>
+                    <span>CSV格式</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-list-check"></i></div>
+            <div>日程</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="far fa-calendar"></i></div>
+            <div>日历</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>统计</div>
+        </div>
+        <div class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-gear"></i></div>
+            <div>设置</div>
+        </div>
+    </div>
+</body>
+</html> 

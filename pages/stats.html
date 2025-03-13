@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>统计分析 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* 图表样式 */
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        
+        .progress-value {
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        .chart-bar {
+            height: 130px;
+            display: flex;
+            align-items: flex-end;
+            padding-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .bar {
+            flex: 1;
+            margin: 0 3px;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+        }
+        
+        .bar::after {
+            content: attr(data-value) "%";
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .pie-chart {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #1677ff 0% 40%, 
+                #52c41a 40% 65%, 
+                #fa8c16 65% 85%,
+                #f0f0f0 85% 100%
+            );
+            position: relative;
+        }
+        
+        .pie-chart::after {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <div class="page-title">统计分析</div>
+        </div>
+        
+        <!-- 时间周期选择 -->
+        <div class="view-tabs">
+            <div class="view-tab">本周</div>
+            <div class="view-tab active">本月</div>
+            <div class="view-tab">全年</div>
+        </div>
+        
+        <!-- 日程完成率 -->
+        <div class="chart-container">
+            <div class="chart-title">日程完成率</div>
+            <div class="text-sm mb-2 flex justify-between">
+                <span class="text-gray-500">已完成：18/24</span>
+                <span class="font-medium">75%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-value" style="width: 75%; background-color: #1677ff;"></div>
+            </div>
+            <div class="mt-4 text-xs text-gray-500">
+                <i class="fas fa-arrow-trend-up text-green-500"></i>
+                <span class="ml-1">较上月提高12%</span>
+            </div>
+        </div>
+        
+        <!-- 日程类型分布 -->
+        <div class="chart-container">
+            <div class="chart-title">日程类型分布</div>
+            <div class="flex items-center">
+                <div class="pie-chart"></div>
+                <div class="ml-6">
+                    <div class="text-sm mb-2">
+                        <span class="color-dot" style="background-color: #1677ff;"></span>
+                        <span>工作 (40%)</span>
+                    </div>
+                    <div class="text-sm mb-2">
+                        <span class="color-dot" style="background-color: #52c41a;"></span>
+                        <span>学习 (25%)</span>
+                    </div>
+                    <div class="text-sm mb-2">
+                        <span class="color-dot" style="background-color: #fa8c16;"></span>
+                        <span>娱乐 (20%)</span>
+                    </div>
+                    <div class="text-sm">
+                        <span class="color-dot" style="background-color: #f0f0f0;"></span>
+                        <span>其他 (15%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 每周日程数量 -->
+        <div class="chart-container">
+            <div class="chart-title">每周日程数量</div>
+            <div class="chart-bar">
+                <div class="bar" style="height: 30%; background-color: #1677ff;" data-value="30"></div>
+                <div class="bar" style="height: 45%; background-color: #1677ff;" data-value="45"></div>
+                <div class="bar" style="height: 75%; background-color: #1677ff;" data-value="75"></div>
+                <div class="bar" style="height: 60%; background-color: #1677ff;" data-value="60"></div>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500">
+                <div>第1周</div>
+                <div>第2周</div>
+                <div>第3周</div>
+                <div>第4周</div>
+            </div>
+        </div>
+        
+        <!-- AI分析洞察 -->
+        <div class="chart-container">
+            <div class="chart-title">AI分析洞察</div>
+            <div class="text-sm">
+                <div class="mb-3">
+                    <div class="font-medium mb-1">时间管理建议</div>
+                    <div class="text-gray-600">您在工作日的14:00-16:00期间完成率最高，建议安排重要日程在此时间段。</div>
+                </div>
+                <div class="mb-3">
+                    <div class="font-medium mb-1">活动平衡度</div>
+                    <div class="text-gray-600">本月娱乐类日程占比低于健康水平，建议适当增加休闲活动。</div>
+                </div>
+                <div>
+                    <div class="font-medium mb-1">效率分析</div>
+                    <div class="text-gray-600">周一日程安排过多，完成率较低，建议适当减少或重新分配。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-list-check"></i></div>
+            <div>日程</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="far fa-calendar"></i></div>
+            <div>日历</div>
+        </div>
+        <div class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>统计</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-gear"></i></div>
+            <div>设置</div>
+        </div>
+    </div>
+</body>
+</html> 

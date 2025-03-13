@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提醒设置 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .reminder-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .reminder-section-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .reminder-section-title i {
+            margin-right: 8px;
+            color: #1677ff;
+        }
+        .reminder-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .reminder-option:last-child {
+            border-bottom: none;
+        }
+        .reminder-label {
+            flex: 1;
+        }
+        .reminder-name {
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        .reminder-desc {
+            font-size: 12px;
+            color: #999;
+        }
+        .time-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .time-chip {
+            padding: 6px 10px;
+            background-color: #f5f7fa;
+            border-radius: 16px;
+            font-size: 12px;
+            color: #666;
+            border: 1px solid transparent;
+        }
+        .time-chip.active {
+            background-color: #e6f4ff;
+            color: #1677ff;
+            border-color: #91caff;
+        }
+        .time-chip.custom {
+            border-color: #e0e0e0;
+            color: #1677ff;
+        }
+        .day-selector {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .day-chip {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f7fa;
+            border-radius: 50%;
+            font-size: 14px;
+            color: #666;
+        }
+        .day-chip.active {
+            background-color: #1677ff;
+            color: white;
+        }
+        .custom-selector {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .custom-input {
+            width: 60px;
+            height: 36px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin: 0 8px;
+        }
+        .custom-unit {
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 导航头部 -->
+        <div class="page-header">
+            <a href="settings.html" class="text-gray-600"><i class="fas fa-arrow-left"></i></a>
+            <div class="page-title">提醒设置</div>
+            <a href="#" class="text-blue-500">保存</a>
+        </div>
+        
+        <!-- 默认提醒时间 -->
+        <div class="reminder-section">
+            <div class="reminder-section-title">
+                <i class="fas fa-clock"></i>
+                <span>默认提醒时间</span>
+            </div>
+            
+            <div class="text-sm text-gray-600 mb-3">
+                新创建的日程将默认使用以下提醒时间：
+            </div>
+            
+            <div class="time-selector">
+                <div class="time-chip">无提醒</div>
+                <div class="time-chip">准时</div>
+                <div class="time-chip active">提前15分钟</div>
+                <div class="time-chip">提前30分钟</div>
+                <div class="time-chip">提前1小时</div>
+                <div class="time-chip">提前3小时</div>
+                <div class="time-chip">提前1天</div>
+                <div class="time-chip custom">自定义...</div>
+            </div>
+            
+            <!-- 自定义提醒时间（默认隐藏） -->
+            <div class="custom-selector mt-4" style="display: none;">
+                <span>提前</span>
+                <input type="number" class="custom-input" value="15">
+                <select class="custom-unit">
+                    <option>分钟</option>
+                    <option>小时</option>
+                    <option>天</option>
+                    <option>周</option>
+                </select>
+                <button class="text-blue-500">确定</button>
+            </div>
+        </div>
+        
+        <!-- 多重提醒 -->
+        <div class="reminder-section">
+            <div class="reminder-section-title">
+                <i class="fas fa-bells"></i>
+                <span>多重提醒</span>
+            </div>
+            
+            <div class="reminder-option">
+                <div class="reminder-label">
+                    <div class="reminder-name">允许多重提醒</div>
+                    <div class="reminder-desc">为重要日程设置多个提醒时间</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="mt-2 mb-4">
+                <div class="text-sm">当前设置的多重提醒：</div>
+                <div class="flex items-center mt-2">
+                    <div class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-sm mr-2">提前15分钟</div>
+                    <div class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-sm mr-2">提前1天</div>
+                    <button class="text-blue-500 text-sm ml-2">+ 添加</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 提醒方式 -->
+        <div class="reminder-section">
+            <div class="reminder-section-title">
+                <i class="fas fa-bell"></i>
+                <span>提醒方式</span>
+            </div>
+            
+            <div class="reminder-option">
+                <div class="reminder-label">
+                    <div class="reminder-name">应用内通知</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="reminder-option">
+                <div class="reminder-label">
+                    <div class="reminder-name">系统通知</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="reminder-option">
+                <div class="reminder-label">
+                    <div class="reminder-name">提醒声音</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="reminder-option">
+                <div class="reminder-label">
+                    <div class="reminder-name">震动</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="reminder-option">
+                <div class="reminder-label">
+                    <div class="reminder-name">邮件提醒</div>
+                    <div class="reminder-desc">仅对重要日程生效</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 免打扰时间 -->
+        <div class="reminder-section">
+            <div class="reminder-section-title">
+                <i class="fas fa-moon"></i>
+                <span>免打扰时间</span>
+            </div>
+            
+            <div class="reminder-option">
+                <div class="reminder-label">
+                    <div class="reminder-name">开启免打扰模式</div>
+                    <div class="reminder-desc">在指定时间段内不接收提醒通知</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="flex justify-between mt-3">
+                <div>
+                    <div class="text-sm mb-1">开始时间</div>
+                    <select class="form-control py-1 px-2">
+                        <option>22:00</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="text-sm mb-1">结束时间</div>
+                    <select class="form-control py-1 px-2">
+                        <option>07:00</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <div class="text-sm mb-2">生效日期</div>
+                <div class="day-selector">
+                    <div class="day-chip active">一</div>
+                    <div class="day-chip active">二</div>
+                    <div class="day-chip active">三</div>
+                    <div class="day-chip active">四</div>
+                    <div class="day-chip active">五</div>
+                    <div class="day-chip active">六</div>
+                    <div class="day-chip active">日</div>
+                </div>
+            </div>
+            
+            <div class="reminder-option mt-3">
+                <div class="reminder-label">
+                    <div class="reminder-name">重要提醒不受限制</div>
+                    <div class="reminder-desc">标记为"重要"的日程提醒将不受免打扰限制</div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帮助中心 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .search-bar {
+            position: relative;
+            margin-bottom: 16px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            font-size: 16px;
+            background-color: #f5f7fa;
+        }
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        .help-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .help-section-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .faq-item {
+            margin-bottom: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 16px;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-question {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 4px 0;
+        }
+        .faq-answer {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+            line-height: 1.5;
+            display: none;
+        }
+        .faq-answer.active {
+            display: block;
+        }
+        .category-list {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            gap: 8px;
+        }
+        .category-item {
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 13px;
+            white-space: nowrap;
+            background-color: #f5f7fa;
+            color: #666;
+        }
+        .category-item.active {
+            background-color: #e6f4ff;
+            color: #1677ff;
+            font-weight: 500;
+        }
+        .help-footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #999;
+            font-size: 14px;
+        }
+        .contact-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 16px;
+        }
+        .contact-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+        }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            font-size: 20px;
+            color: #1677ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 导航头部 -->
+        <div class="page-header">
+            <a href="settings.html" class="text-gray-600"><i class="fas fa-arrow-left"></i></a>
+            <div class="page-title">帮助中心</div>
+            <div class="w-6"></div> <!-- 占位 -->
+        </div>
+        
+        <!-- 搜索框 -->
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="搜索常见问题...">
+        </div>
+        
+        <!-- 分类标签 -->
+        <div class="category-list">
+            <div class="category-item active">全部</div>
+            <div class="category-item">基础功能</div>
+            <div class="category-item">账户设置</div>
+            <div class="category-item">提醒通知</div>
+            <div class="category-item">同步备份</div>
+            <div class="category-item">使用技巧</div>
+        </div>
+        
+        <!-- 常见问题 -->
+        <div class="help-section">
+            <div class="help-section-title">常见问题</div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>如何创建重复性日程?</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer active">
+                    <p>创建或编辑日程时，点击"重复"选项，您可以选择每天、每周、每月或自定义重复规则。设置好之后，系统将按照您的规则自动创建重复性日程。</p>
+                    <a href="#" class="text-blue-500 mt-2 inline-block">查看详细教程 →</a>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>如何更改默认提醒时间？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>进入"设置 → 提醒设置 → 默认提醒时间"，在列表中选择您希望的默认提醒时间。这样您创建的每个新日程都会使用这个时间作为默认提醒。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>如何将我的日历与其他应用同步？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>进入"设置 → 数据同步 → 第三方数据迁移"，选择您想要同步的应用（如Google日历、Apple日历等），按照指引完成授权操作即可实现双向同步。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>如何使用AI智能创建日程？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>在添加日程页面，点击右上角的魔法棒图标，然后用自然语言描述您的日程（例如"明天下午3点和销售团队开会两小时"），AI将自动识别时间、地点和事件类型，为您快速创建日程。</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>忘记密码怎么办？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>在登录页面点击"忘记密码"，输入您的注册邮箱或手机号，系统将发送验证码。验证身份后，您可以设置新密码。如仍有问题，请联系客服支持。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 视频教程 -->
+        <div class="help-section">
+            <div class="help-section-title">视频教程</div>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <div class="rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="bg-white bg-opacity-80 rounded-full p-2">
+                                <i class="fas fa-play text-blue-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-sm mt-2">新手入门指南</div>
+                </div>
+                
+                <div class="rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                        <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/mqdefault.jpg" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="bg-white bg-opacity-80 rounded-full p-2">
+                                <i class="fas fa-play text-blue-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-sm mt-2">高级功能详解</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3">
+                <a href="#" class="text-blue-500 text-sm">查看全部教程</a>
+            </div>
+        </div>
+        
+        <!-- 联系我们 -->
+        <div class="help-section">
+            <div class="help-section-title">无法解决问题？联系我们</div>
+            
+            <div class="contact-options">
+                <div class="contact-option">
+                    <div class="contact-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="text-sm">在线客服</div>
+                </div>
+                
+                <div class="contact-option">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="text-sm">邮件支持</div>
+                </div>
+                
+                <div class="contact-option">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="text-sm">电话咨询</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="help-footer">
+            <p>客服工作时间: 周一至周五 9:00-18:00</p>
+            <p class="mt-1">版本: v1.0.2</p>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-list-check"></i></div>
+            <div>日程</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="far fa-calendar"></i></div>
+            <div>日历</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>统计</div>
+        </div>
+        <div class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-gear"></i></div>
+            <div>设置</div>
+        </div>
+    </div>
+</body>
+</html> 

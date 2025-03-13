@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑日程 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <div class="page-title">编辑日程</div>
+            <div class="flex">
+                <button class="text-red-500 mr-4">删除</button>
+                <button class="btn-primary">
+                    <span>保存</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 编辑日程表单 -->
+        <form>
+            <!-- 标题 -->
+            <div class="form-group">
+                <label class="form-label" for="title">标题</label>
+                <input type="text" class="form-control" id="title" value="AI课程学习">
+            </div>
+            
+            <!-- 日期和时间 -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="date">日期</label>
+                    <input type="date" class="form-control" id="date" value="2023-11-14">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="startTime">开始时间</label>
+                    <input type="time" class="form-control" id="startTime" value="14:00">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="endDate">结束日期</label>
+                    <input type="date" class="form-control" id="endDate" value="2023-11-14">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="endTime">结束时间</label>
+                    <input type="time" class="form-control" id="endTime" value="16:00">
+                </div>
+            </div>
+            
+            <!-- 分类 -->
+            <div class="form-group">
+                <label class="form-label" for="category">分类</label>
+                <select class="form-control" id="category">
+                    <option value="1">工作</option>
+                    <option value="2" selected>学习</option>
+                    <option value="3">娱乐</option>
+                    <option value="4">个人</option>
+                </select>
+            </div>
+            
+            <!-- 地点 -->
+            <div class="form-group">
+                <label class="form-label" for="location">地点</label>
+                <input type="text" class="form-control" id="location" value="图书馆">
+            </div>
+            
+            <!-- 描述 -->
+            <div class="form-group">
+                <label class="form-label" for="description">描述</label>
+                <textarea class="form-control" id="description" rows="3">完成AI编程课程第3章内容学习，准备下周小组讨论。</textarea>
+            </div>
+            
+            <!-- 完成状态 -->
+            <div class="form-group">
+                <div class="toggle-container">
+                    <label class="form-label mb-0">已完成</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="completed">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 提醒 -->
+            <div class="form-group">
+                <div class="toggle-container">
+                    <label class="form-label mb-0">提醒</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="reminder" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 提醒时间 -->
+            <div class="form-group" id="reminderTimeContainer">
+                <label class="form-label" for="reminderTime">提醒时间</label>
+                <select class="form-control" id="reminderTime">
+                    <option value="0">日程开始时</option>
+                    <option value="5">5分钟前</option>
+                    <option value="15" selected>15分钟前</option>
+                    <option value="30">30分钟前</option>
+                    <option value="60">1小时前</option>
+                    <option value="1440">1天前</option>
+                </select>
+            </div>
+        </form>
+        
+        <!-- 智能建议 -->
+        <div class="mt-6">
+            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+                <div class="flex items-start">
+                    <i class="fas fa-lightbulb text-yellow-500 mt-1 mr-2"></i>
+                    <div>
+                        <div class="text-sm font-medium">AI建议</div>
+                        <div class="text-xs text-gray-700 mt-1">
+                            基于历史记录，您通常需要提前30分钟准备学习资料。建议将提醒时间调整为30分钟前。
+                        </div>
+                        <button class="text-xs text-blue-500 mt-2">应用建议</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-list-check"></i></div>
+            <div>日程</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="far fa-calendar"></i></div>
+            <div>日历</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>统计</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-gear"></i></div>
+            <div>设置</div>
+        </div>
+    </div>
+    
+    <script>
+        // 提醒开关控制提醒时间显示
+        document.getElementById('reminder').addEventListener('change', function() {
+            const reminderTimeContainer = document.getElementById('reminderTimeContainer');
+            if (this.checked) {
+                reminderTimeContainer.style.display = 'block';
+            } else {
+                reminderTimeContainer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,404 @@
+/* 日程管理应用样式 */
+
+/* 设备框架样式 */
+.device-container {
+  width: 390px;
+  height: 844px;
+  background-color: white;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  margin: 20px;
+  display: inline-block;
+}
+
+/* 状态栏样式 */
+.status-bar {
+  height: 44px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 底部导航栏 */
+.tab-bar {
+  height: 83px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #999;
+  font-size: 10px;
+  padding: 6px 0;
+}
+
+.tab-item.active {
+  color: #1677ff;
+}
+
+.tab-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+/* 内容区域 */
+.content-area {
+  height: calc(100% - 127px);
+  overflow-y: auto;
+  padding: 15px;
+}
+
+/* 标题和头部 */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background-color: #1677ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary i {
+  margin-right: 6px;
+}
+
+.floating-btn {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background-color: #1677ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-size: 24px;
+}
+
+/* 日程项样式 */
+.schedule-item {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.schedule-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.schedule-checkbox {
+  margin-right: 12px;
+}
+
+.schedule-title {
+  font-size: 16px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.schedule-category {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.schedule-details {
+  color: #666;
+  font-size: 14px;
+  margin-left: 30px;
+}
+
+.schedule-time, .schedule-location {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.schedule-time i, .schedule-location i {
+  margin-right: 8px;
+  color: #999;
+}
+
+/* 分类颜色 */
+.category-work {
+  background-color: rgba(22, 119, 255, 0.1);
+  color: #1677ff;
+}
+
+.category-study {
+  background-color: rgba(82, 196, 26, 0.1);
+  color: #52c41a;
+}
+
+.category-leisure {
+  background-color: rgba(250, 140, 22, 0.1);
+  color: #fa8c16;
+}
+
+/* 视图切换 */
+.view-tabs {
+  display: flex;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.view-tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #666;
+  border-radius: 4px;
+}
+
+.view-tab.active {
+  background-color: #fff;
+  color: #1677ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* 日历视图 */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.month-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.calendar-day.today {
+  background-color: rgba(22, 119, 255, 0.1);
+  border-color: #1677ff;
+}
+
+.calendar-day.has-events::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #1677ff;
+}
+
+.day-number {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 表单样式 */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-control:focus {
+  border-color: #1677ff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* 开关样式 */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #1677ff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* 统计图表容器 */
+.chart-container {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* 设置项样式 */
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  font-size: 16px;
+  color: #333;
+}
+
+.settings-value {
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.settings-value i {
+  margin-left: 8px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .device-container {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+  }
+} 

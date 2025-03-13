@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通知中心 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .notification-tabs {
+            display: flex;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 16px;
+            width: 100%;
+        }
+        .notification-tab {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #666;
+            border-radius: 4px;
+        }
+        .notification-tab.active {
+            background-color: #fff;
+            color: #1677ff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .notification-date {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            margin: 16px 0 8px;
+        }
+        .notification-item {
+            display: flex;
+            padding: 14px;
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        .notification-item.unread::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #1677ff;
+        }
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+        .notification-icon.reminder {
+            background-color: #e6f4ff;
+            color: #1677ff;
+        }
+        .notification-icon.system {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        .notification-icon.alert {
+            background-color: #fff2e8;
+            color: #fa8c16;
+        }
+        .notification-content {
+            flex: 1;
+        }
+        .notification-title {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .notification-desc {
+            font-size: 13px;
+            color: #666;
+        }
+        .notification-time {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+        }
+        .notification-actions {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .notification-btn {
+            font-size: 13px;
+            color: #1677ff;
+            margin-right: 16px;
+        }
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+            color: #999;
+        }
+        .empty-state i {
+            font-size: 48px;
+            color: #e0e0e0;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 导航头部 -->
+        <div class="page-header">
+            <a href="settings.html" class="text-gray-600"><i class="fas fa-arrow-left"></i></a>
+            <div class="page-title">通知中心</div>
+            <a href="#" class="text-gray-600"><i class="fas fa-ellipsis-vertical"></i></a>
+        </div>
+        
+        <!-- 通知标签页 -->
+        <div class="notification-tabs">
+            <div class="notification-tab active">全部</div>
+            <div class="notification-tab">提醒</div>
+            <div class="notification-tab">系统</div>
+            <div class="notification-tab">未读</div>
+        </div>
+        
+        <!-- 筛选和清除 -->
+        <div class="notification-header">
+            <div class="text-sm text-gray-500">共12条通知，3条未读</div>
+            <a href="#" class="text-blue-500 text-sm">全部已读</a>
+        </div>
+        
+        <!-- 通知列表 -->
+        <div class="notification-list">
+            <div class="notification-date">今天</div>
+            
+            <!-- 提醒通知 -->
+            <div class="notification-item unread">
+                <div class="notification-icon reminder">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">即将开始: 团队周会</div>
+                    <div class="notification-desc">将于15分钟后开始，线上会议室</div>
+                    <div class="notification-time">10:15</div>
+                    <div class="notification-actions">
+                        <a href="#" class="notification-btn">查看详情</a>
+                        <a href="#" class="notification-btn">推迟提醒</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 系统通知 -->
+            <div class="notification-item">
+                <div class="notification-icon system">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">云同步成功</div>
+                    <div class="notification-desc">您的所有日程数据已成功同步到云端</div>
+                    <div class="notification-time">09:23</div>
+                </div>
+            </div>
+            
+            <div class="notification-date">昨天</div>
+            
+            <!-- 提醒通知 -->
+            <div class="notification-item unread">
+                <div class="notification-icon reminder">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">日程提醒: 项目截止日期</div>
+                    <div class="notification-desc">明天是项目交付截止日期，请做好最后准备</div>
+                    <div class="notification-time">昨天 18:30</div>
+                    <div class="notification-actions">
+                        <a href="#" class="notification-btn">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 系统通知 -->
+            <div class="notification-item unread">
+                <div class="notification-icon alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">日程冲突提醒</div>
+                    <div class="notification-desc">您刚添加的"客户会议"与已有日程"团队培训"时间重叠</div>
+                    <div class="notification-time">昨天 14:45</div>
+                    <div class="notification-actions">
+                        <a href="#" class="notification-btn">解决冲突</a>
+                        <a href="#" class="notification-btn">忽略</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notification-date">上周</div>
+            
+            <!-- 提醒通知 -->
+            <div class="notification-item">
+                <div class="notification-icon system">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">每周统计报告</div>
+                    <div class="notification-desc">上周您完成了85%的计划日程，比前一周提高了15%</div>
+                    <div class="notification-time">10月5日</div>
+                    <div class="notification-actions">
+                        <a href="#" class="notification-btn">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 空状态（默认隐藏） -->
+            <div class="empty-state" style="display: none;">
+                <i class="fas fa-bell-slash"></i>
+                <div class="text-base mb-2">暂无通知</div>
+                <p class="text-sm">您当前没有任何未读通知</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-list-check"></i></div>
+            <div>日程</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="far fa-calendar"></i></div>
+            <div>日历</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>统计</div>
+        </div>
+        <div class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-gear"></i></div>
+            <div>设置</div>
+        </div>
+    </div>
+</body>
+</html> 

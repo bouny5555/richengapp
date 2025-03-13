@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日程详情 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .detail-header {
+            background-color: #1677ff;
+            color: white;
+            padding: 20px;
+            border-radius: 0 0 16px 16px;
+        }
+        .detail-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .detail-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        .detail-meta i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        .detail-category {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .detail-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .detail-section-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .detail-section-title i {
+            margin-right: 8px;
+            color: #1677ff;
+        }
+        .action-buttons {
+            display: flex;
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            padding: 0 20px;
+        }
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-weight: 500;
+            margin: 0 6px;
+        }
+        .btn-edit {
+            background-color: #fff;
+            color: #1677ff;
+            border: 1px solid #1677ff;
+        }
+        .btn-delete {
+            background-color: #fff;
+            color: #ff4d4f;
+            border: 1px solid #ff4d4f;
+        }
+        .attachment-item {
+            display: flex;
+            align-items: center;
+            background-color: #f5f7fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .attachment-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #e6f4ff;
+            color: #1677ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-right: 12px;
+        }
+        .attachment-info {
+            flex: 1;
+        }
+        .attachment-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .attachment-size {
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area pb-20">
+        <!-- 导航头部 -->
+        <div class="detail-header">
+            <div class="flex justify-between items-center mb-4">
+                <a href="home.html" class="text-white"><i class="fas fa-arrow-left"></i></a>
+                <div class="flex">
+                    <a href="edit-schedule.html" class="text-white mr-4"><i class="fas fa-pencil"></i></a>
+                    <a href="#" class="text-white"><i class="fas fa-ellipsis-vertical"></i></a>
+                </div>
+            </div>
+            
+            <div class="detail-title">团队周会</div>
+            
+            <div class="detail-meta">
+                <i class="far fa-clock"></i>
+                <span>2023年10月12日 (周四) 09:30 - 10:30</span>
+            </div>
+            
+            <div class="detail-meta">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>线上会议室</span>
+            </div>
+            
+            <div class="detail-category">工作</div>
+        </div>
+        
+        <!-- 详情内容 -->
+        <div class="p-4">
+            <!-- 描述部分 -->
+            <div class="detail-section">
+                <div class="detail-section-title">
+                    <i class="fas fa-align-left"></i>
+                    <span>描述</span>
+                </div>
+                <p class="text-gray-700">
+                    讨论本周工作进展和下周计划，每位成员准备5分钟汇报内容。会前请查看项目看板，了解当前各任务状态。会议将包含：
+                </p>
+                <ul class="list-disc pl-5 mt-2 text-gray-700">
+                    <li>上周任务回顾 (15分钟)</li>
+                    <li>本周工作进展 (25分钟)</li>
+                    <li>下周工作计划 (15分钟)</li>
+                    <li>问题讨论 (5分钟)</li>
+                </ul>
+            </div>
+            
+            <!-- 提醒部分 -->
+            <div class="detail-section">
+                <div class="detail-section-title">
+                    <i class="fas fa-bell"></i>
+                    <span>提醒</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-700">提前15分钟</span>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mt-3 flex justify-between items-center">
+                    <span class="text-gray-700">提前1天发送邮件提醒</span>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 附件部分 -->
+            <div class="detail-section">
+                <div class="detail-section-title">
+                    <i class="fas fa-paperclip"></i>
+                    <span>附件</span>
+                </div>
+                
+                <div class="attachment-item">
+                    <div class="attachment-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="attachment-info">
+                        <div class="attachment-name">上周会议纪要.pdf</div>
+                        <div class="attachment-size">2.4 MB</div>
+                    </div>
+                    <a href="#" class="text-blue-500"><i class="fas fa-download"></i></a>
+                </div>
+                
+                <div class="attachment-item">
+                    <div class="attachment-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="attachment-info">
+                        <div class="attachment-name">本月项目进度.xlsx</div>
+                        <div class="attachment-size">1.8 MB</div>
+                    </div>
+                    <a href="#" class="text-blue-500"><i class="fas fa-download"></i></a>
+                </div>
+            </div>
+            
+            <!-- 参与者部分 -->
+            <div class="detail-section">
+                <div class="detail-section-title">
+                    <i class="fas fa-users"></i>
+                    <span>参与者</span>
+                </div>
+                
+                <div class="flex items-center mb-3">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="头像" class="w-10 h-10 rounded-full mr-3">
+                    <div>
+                        <div class="font-medium">张小明 (组织者)</div>
+                        <div class="text-sm text-gray-500">Product Manager</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center mb-3">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="头像" class="w-10 h-10 rounded-full mr-3">
+                    <div>
+                        <div class="font-medium">李梅</div>
+                        <div class="text-sm text-gray-500">UI Designer</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="头像" class="w-10 h-10 rounded-full mr-3">
+                    <div>
+                        <div class="font-medium">王强</div>
+                        <div class="text-sm text-gray-500">Developer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部操作按钮 -->
+        <div class="action-buttons">
+            <a href="edit-schedule.html" class="action-btn btn-edit">
+                <i class="fas fa-pencil mr-2"></i> 编辑
+            </a>
+            <button class="action-btn btn-delete">
+                <i class="fas fa-trash mr-2"></i> 删除
+            </button>
+        </div>
+    </div>
+</body>
+</html> 

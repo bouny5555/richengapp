@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <div class="page-title">设置</div>
+        </div>
+        
+        <!-- 常规设置 -->
+        <div class="chart-container mb-6">
+            <div class="chart-title mb-4">常规</div>
+            
+            <div class="settings-item">
+                <div class="settings-label">默认视图</div>
+                <div class="settings-value">
+                    <span>日视图</span>
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">一周起始日</div>
+                <div class="settings-value">
+                    <span>周一</span>
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">24小时制</div>
+                <div class="settings-value">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 提醒设置 -->
+        <div class="chart-container mb-6">
+            <div class="chart-title mb-4">提醒</div>
+            
+            <div class="settings-item">
+                <div class="settings-label">默认提醒时间</div>
+                <div class="settings-value">
+                    <span>15分钟前</span>
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">提醒声音</div>
+                <div class="settings-value">
+                    <span>默认</span>
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">震动</div>
+                <div class="settings-value">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 数据管理 -->
+        <div class="chart-container mb-6">
+            <div class="chart-title mb-4">数据</div>
+            
+            <div class="settings-item">
+                <div class="settings-label">导出数据</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">导入数据</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">数据备份</div>
+                <div class="settings-value">
+                    <span>自动</span>
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI功能 -->
+        <div class="chart-container mb-6">
+            <div class="chart-title mb-4">AI功能</div>
+            
+            <div class="settings-item">
+                <div class="settings-label">智能建议</div>
+                <div class="settings-value">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">智能文本解析</div>
+                <div class="settings-value">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">隐私设置</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 关于 -->
+        <div class="chart-container mb-6">
+            <div class="chart-title mb-4">关于</div>
+            
+            <div class="settings-item">
+                <div class="settings-label">版本</div>
+                <div class="settings-value">
+                    <span>1.0.0</span>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">隐私政策</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">用户协议</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right text-gray-400 ml-2"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mb-6">
+            <button class="text-red-500 font-medium">退出登录</button>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-list-check"></i></div>
+            <div>日程</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="far fa-calendar"></i></div>
+            <div>日历</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>统计</div>
+        </div>
+        <div class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-gear"></i></div>
+            <div>设置</div>
+        </div>
+    </div>
+</body>
+</html> 

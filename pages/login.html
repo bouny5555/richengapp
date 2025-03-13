@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录/注册 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .auth-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 0 30px;
+        }
+        .auth-logo {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .auth-tabs {
+            display: flex;
+            width: 100%;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #999;
+            position: relative;
+        }
+        .auth-tab.active {
+            color: #1677ff;
+            font-weight: 500;
+        }
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background-color: #1677ff;
+        }
+        .social-login {
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 22px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <div class="auth-container">
+            <!-- Logo -->
+            <div class="auth-logo">
+                <div class="text-4xl text-blue-500 mb-2"><i class="far fa-calendar-check"></i></div>
+                <div class="text-xl font-bold">日程管理</div>
+                <div class="text-sm text-gray-500 mt-1">高效管理您的每一天</div>
+            </div>
+            
+            <!-- 登录/注册切换 -->
+            <div class="auth-tabs">
+                <div class="auth-tab active">登录</div>
+                <div class="auth-tab">注册</div>
+            </div>
+            
+            <!-- 登录表单 -->
+            <div class="w-full">
+                <div class="form-group">
+                    <div class="form-label">手机号/邮箱</div>
+                    <input type="text" class="form-control" placeholder="请输入手机号或邮箱">
+                </div>
+                
+                <div class="form-group">
+                    <div class="form-label">密码</div>
+                    <input type="password" class="form-control" placeholder="请输入密码">
+                </div>
+                
+                <div class="flex justify-between items-center mb-4 text-sm">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember" class="mr-2">
+                        <label for="remember" class="text-gray-600">记住我</label>
+                    </div>
+                    <a href="forgot-password.html" class="text-blue-500">忘记密码?</a>
+                </div>
+                
+                <button class="btn-primary w-full py-3 mb-4">登录</button>
+                
+                <!-- 分隔线 -->
+                <div class="flex items-center my-5">
+                    <div class="flex-grow h-px bg-gray-200"></div>
+                    <div class="px-4 text-sm text-gray-500">其他登录方式</div>
+                    <div class="flex-grow h-px bg-gray-200"></div>
+                </div>
+                
+                <!-- 社交登录 -->
+                <div class="social-login">
+                    <div class="social-icon text-green-600">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <div class="social-icon text-blue-400">
+                        <i class="fab fa-qq"></i>
+                    </div>
+                    <div class="social-icon text-red-500">
+                        <i class="fab fa-weibo"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

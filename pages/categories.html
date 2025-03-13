@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类管理 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .category-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .category-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            margin-right: 12px;
+        }
+        .category-label {
+            display: flex;
+            align-items: center;
+        }
+        .category-actions {
+            display: flex;
+            align-items: center;
+        }
+        .category-count {
+            background-color: #f5f7fa;
+            color: #666;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-right: 12px;
+        }
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .color-option.selected {
+            border-color: #333;
+            position: relative;
+        }
+        .color-option.selected::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 340px;
+            padding: 20px;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .modal-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .modal-close {
+            font-size: 18px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-area">
+        <!-- 导航头部 -->
+        <div class="page-header">
+            <a href="settings.html" class="text-gray-600"><i class="fas fa-arrow-left"></i></a>
+            <div class="page-title">分类管理</div>
+            <div class="w-6"></div> <!-- 占位 -->
+        </div>
+        
+        <!-- 描述 -->
+        <p class="text-gray-500 mb-6">管理您的日程分类，为不同类型的活动设置不同颜色。</p>
+        
+        <!-- 分类列表 -->
+        <div class="category-list">
+            <!-- 工作分类 -->
+            <div class="category-item">
+                <div class="category-label">
+                    <div class="category-color" style="background-color: #1677ff;"></div>
+                    <div>工作</div>
+                </div>
+                <div class="category-actions">
+                    <div class="category-count">18</div>
+                    <a href="#" class="text-gray-400 mr-4"><i class="fas fa-pencil"></i></a>
+                    <a href="#" class="text-gray-400"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            
+            <!-- 学习分类 -->
+            <div class="category-item">
+                <div class="category-label">
+                    <div class="category-color" style="background-color: #52c41a;"></div>
+                    <div>学习</div>
+                </div>
+                <div class="category-actions">
+                    <div class="category-count">12</div>
+                    <a href="#" class="text-gray-400 mr-4"><i class="fas fa-pencil"></i></a>
+                    <a href="#" class="text-gray-400"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            
+            <!-- 娱乐分类 -->
+            <div class="category-item">
+                <div class="category-label">
+                    <div class="category-color" style="background-color: #fa8c16;"></div>
+                    <div>娱乐</div>
+                </div>
+                <div class="category-actions">
+                    <div class="category-count">9</div>
+                    <a href="#" class="text-gray-400 mr-4"><i class="fas fa-pencil"></i></a>
+                    <a href="#" class="text-gray-400"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            
+            <!-- 家庭分类 -->
+            <div class="category-item">
+                <div class="category-label">
+                    <div class="category-color" style="background-color: #722ed1;"></div>
+                    <div>家庭</div>
+                </div>
+                <div class="category-actions">
+                    <div class="category-count">6</div>
+                    <a href="#" class="text-gray-400 mr-4"><i class="fas fa-pencil"></i></a>
+                    <a href="#" class="text-gray-400"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            
+            <!-- 健康分类 -->
+            <div class="category-item">
+                <div class="category-label">
+                    <div class="category-color" style="background-color: #eb2f96;"></div>
+                    <div>健康</div>
+                </div>
+                <div class="category-actions">
+                    <div class="category-count">4</div>
+                    <a href="#" class="text-gray-400 mr-4"><i class="fas fa-pencil"></i></a>
+                    <a href="#" class="text-gray-400"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 添加分类按钮 -->
+        <div class="mt-6">
+            <button class="btn-primary w-full">
+                <i class="fas fa-plus mr-2"></i>添加新分类
+            </button>
+        </div>
+        
+        <!-- 模态框（默认隐藏） -->
+        <div class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">添加分类</div>
+                    <a href="#" class="modal-close"><i class="fas fa-times"></i></a>
+                </div>
+                
+                <div class="form-group">
+                    <div class="form-label">分类名称</div>
+                    <input type="text" class="form-control" placeholder="请输入分类名称">
+                </div>
+                
+                <div class="form-group">
+                    <div class="form-label">选择颜色</div>
+                    <div class="color-palette">
+                        <div class="color-option selected" style="background-color: #1677ff;"></div>
+                        <div class="color-option" style="background-color: #52c41a;"></div>
+                        <div class="color-option" style="background-color: #fa8c16;"></div>
+                        <div class="color-option" style="background-color: #722ed1;"></div>
+                        <div class="color-option" style="background-color: #eb2f96;"></div>
+                        <div class="color-option" style="background-color: #f5222d;"></div>
+                        <div class="color-option" style="background-color: #13c2c2;"></div>
+                        <div class="color-option" style="background-color: #fadb14;"></div>
+                        <div class="color-option" style="background-color: #a0d911;"></div>
+                        <div class="color-option" style="background-color: #5cdbd3;"></div>
+                        <div class="color-option" style="background-color: #b37feb;"></div>
+                        <div class="color-option" style="background-color: #ff7a45;"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="form-label">图标</div>
+                    <select class="form-control">
+                        <option value="briefcase">工作 (公文包)</option>
+                        <option value="book">学习 (书本)</option>
+                        <option value="gamepad">娱乐 (游戏)</option>
+                        <option value="home">家庭 (房子)</option>
+                        <option value="heartbeat">健康 (心跳)</option>
+                        <option value="plane">旅行 (飞机)</option>
+                    </select>
+                </div>
+                
+                <div class="mt-6 flex space-x-4">
+                    <button class="btn-primary flex-1 py-2">保存</button>
+                    <button class="border border-gray-300 text-gray-700 rounded-lg flex-1 py-2">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-list-check"></i></div>
+            <div>日程</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="far fa-calendar"></i></div>
+            <div>日历</div>
+        </div>
+        <div class="tab-item">
+            <div class="tab-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>统计</div>
+        </div>
+        <div class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-gear"></i></div>
+            <div>设置</div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎使用 - 日程管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .onboarding-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .onboarding-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .onboarding-image {
+            width: 280px;
+            height: 280px;
+            margin-bottom: 30px;
+            object-fit: contain;
+        }
+        .onboarding-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .onboarding-desc {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        .onboarding-pagination {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .pagination-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            margin: 0 4px;
+        }
+        .pagination-dot.active {
+            width: 20px;
+            border-radius: 4px;
+            background-color: #1677ff;
+        }
+        .onboarding-buttons {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .btn-skip {
+            color: #999;
+            padding: 12px 20px;
+        }
+        .btn-next {
+            background-color: #1677ff;
+            color: white;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 500;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+            width: 100%;
+        }
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 16px;
+            background-color: #f9fafc;
+            border-radius: 12px;
+        }
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .feature-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .feature-desc {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 引导页内容 -->
+    <div class="onboarding-container">
+        <div class="onboarding-content">
+            <!-- 第一页（显示） -->
+            <div>
+                <img src="https://img.icons8.com/color/480/null/calendar-app.png" alt="日程管理" class="onboarding-image">
+                <h1 class="onboarding-title">欢迎使用日程管理</h1>
+                <p class="onboarding-desc">您的高效时间管理助手，让每一天都井然有序。</p>
+            </div>
+            
+            <!-- 第二页（隐藏） -->
+            <div style="display: none;">
+                <img src="https://img.icons8.com/color/480/null/planner.png" alt="简单记录" class="onboarding-image">
+                <h1 class="onboarding-title">简单记录每一个日程</h1>
+                <p class="onboarding-desc">快速创建任务，设置提醒，从此不错过任何重要事项。</p>
+            </div>
+            
+            <!-- 第三页（隐藏） -->
+            <div style="display: none;">
+                <img src="https://img.icons8.com/color/480/null/brain.png" alt="智能助手" class="onboarding-image">
+                <h1 class="onboarding-title">智能助手帮你规划</h1>
+                <p class="onboarding-desc">AI智能分析您的使用习惯，提供个性化日程建议和时间管理技巧。</p>
+            </div>
+            
+            <!-- 第四页（隐藏） -->
+            <div style="display: none;">
+                <h1 class="onboarding-title">发现更多功能</h1>
+                <p class="onboarding-desc">探索日程管理的强大功能，让时间管理更加高效。</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon" style="background-color: #e6f4ff; color: #1677ff;">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="feature-title">多视图日历</div>
+                        <div class="feature-desc">日/周/月多种查看方式</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon" style="background-color: #f6ffed; color: #52c41a;">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="feature-title">智能提醒</div>
+                        <div class="feature-desc">多重提醒，不遗漏任何事项</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon" style="background-color: #fff2e8; color: #fa8c16;">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="feature-title">数据统计</div>
+                        <div class="feature-desc">直观了解时间分配情况</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon" style="background-color: #fff0f6; color: #eb2f96;">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="feature-title">云同步</div>
+                        <div class="feature-desc">多设备数据实时同步</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="onboarding-pagination">
+            <div class="pagination-dot active"></div>
+            <div class="pagination-dot"></div>
+            <div class="pagination-dot"></div>
+            <div class="pagination-dot"></div>
+        </div>
+        
+        <div class="onboarding-buttons">
+            <button class="btn-skip">跳过</button>
+            <button class="btn-next">下一步</button>
+        </div>
+    </div>
+</body>
+</html> 
